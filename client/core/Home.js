@@ -49,11 +49,11 @@ export default function Home() {
       >
         Photo by{" "}
         <a
-          href='https://unsplash.com/@boudewijn_huysmans'
+          href='https://unsplash.com/photos/LJ9KY8pIH3E'
           target='_blank'
           rel='noopener noreferrer'
         >
-          Boudewijn Huysmans
+          Fotis Fotopoulos
         </a>{" "}
         on Unsplash
       </Typography>
