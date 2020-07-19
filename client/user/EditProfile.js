@@ -41,6 +41,7 @@ export default function EditProfile({ match }) {
   const classes = useStyles();
   const [values, setValues] = useState({
     name: "",
+    about: "",
     password: "",
     email: "",
     open: false,
@@ -74,6 +75,7 @@ export default function EditProfile({ match }) {
   const clickSubmit = () => {
     const user = {
       name: values.name || undefined,
+      about: values.about || undefined,
       email: values.email || undefined,
       password: values.password || undefined,
     };
@@ -112,6 +114,17 @@ export default function EditProfile({ match }) {
           className={classes.textField}
           value={values.name}
           onChange={handleChange("name")}
+          margin='normal'
+        />
+        <br />
+        <TextField
+          id='multiline-flexible'
+          label='About'
+          multiline
+          rows='2'
+          value={values.about}
+          onChange={handleChange("about")}
+          className={classes.textField}
           margin='normal'
         />
         <br />
