@@ -30,7 +30,6 @@ const read = async (params, credentials, signal) => {
   try {
     let response = await fetch("/api/users/" + params.userId, {
       method: "GET",
-      signal: signal,
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -51,7 +50,7 @@ const update = async (params, credentials, user) => {
         Accept: "application/json",
         Authorization: "Bearer " + credentials.t,
       },
-      body: JSON.stringify(user),
+      body: user,
     });
     return await response.json();
   } catch (err) {
