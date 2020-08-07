@@ -17,6 +17,7 @@ import auth from "./../auth/auth-helper";
 import { read } from "./api-user.js";
 import { Redirect, Link } from "react-router-dom";
 import FollowProfileButton from "./../user/FollowProfileButton";
+import ProfileTabs from "./../user/ProfileTabs.js";
 
 const useStyles = makeStyles((theme) => ({
   root: theme.mixins.gutters({
@@ -41,7 +42,7 @@ export default function Profile({ match }) {
   const classes = useStyles();
   const [values, setValues] = useState({
     user: { following: [], followers: [] },
-    redirectToSignin: true,
+    redirectToSignin: false,
     following: false,
   });
   const jwt = auth.isAuthenticated();
@@ -96,7 +97,7 @@ export default function Profile({ match }) {
     ? `/api/users/photo/${values.user._id}?${new Date().getTime()}`
     : "/api/users/defaultphoto";
 
-  if (!values.redirectToSignin) {
+  if (values.redirectToSignin) {
     return <Redirect to='/signin' />;
   }
   return (
@@ -114,7 +115,7 @@ export default function Profile({ match }) {
           <ListItemText
             primary={values.user.name}
             secondary={values.user.email}
-          />{" "}
+          />
           {auth.isAuthenticated().user &&
           auth.isAuthenticated().user._id == values.user._id ? (
             <ListItemSecondaryAction>
@@ -142,6 +143,7 @@ export default function Profile({ match }) {
           />
         </ListItem>
       </List>
+      <ProfileTabs user={values.user} />
     </Paper>
   );
 }

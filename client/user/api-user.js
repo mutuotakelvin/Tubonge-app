@@ -81,7 +81,7 @@ const follow = async (params, credentials, followId) => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        Authorization: "Bearer" + credentials.t,
+        Authorization: "Bearer " + credentials.t,
       },
       body: JSON.stringify({ userId: params.userId, followId: followId }),
     });
@@ -98,7 +98,7 @@ const unfollow = async (params, credentials, unfollowId) => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        Authorization: "Bearer" + credentials.t,
+        Authorization: "Bearer " + credentials.t,
       },
       body: JSON.stringify({ userId: params.userId, unfollowId: unfollowId }),
     });
@@ -116,7 +116,7 @@ const findPeople = async (params, credentials, signal) => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        Authorization: "Bearer" + credentials.t,
+        Authorization: "Bearer " + credentials.t,
       },
     });
     return await response.json();
@@ -125,4 +125,4 @@ const findPeople = async (params, credentials, signal) => {
   }
 };
 
-export { create, list, read, update, remove, unfollow, follow, findPeople };
+export { create, list, read, update, remove, follow, unfollow, findPeople };
